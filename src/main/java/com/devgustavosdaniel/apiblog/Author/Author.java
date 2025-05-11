@@ -3,7 +3,6 @@ package com.devgustavosdaniel.apiblog.Author;
 import com.devgustavosdaniel.apiblog.Post.Post;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +14,15 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private LocalDate publicationDate;
-    @OneToMany
+    @OneToMany(mappedBy = "author")
     private List<Post> posts = new ArrayList<>();
 
     public Author() {
     }
 
-    public Author( String name, List<Post> posts, LocalDate publicationDate) {
+    public Author( String name, List<Post> posts) {
         this.name = name;
         this.posts = posts;
-        this.publicationDate = publicationDate;
     }
 
     public Long getIdAuthor() {
@@ -48,11 +45,4 @@ public class Author {
         this.posts = posts;
     }
 
-    public LocalDate getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
-    }
 }

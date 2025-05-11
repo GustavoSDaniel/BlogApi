@@ -1,17 +1,24 @@
-package com.devgustavosdaniel.apiblog.Author;
+package com.devgustavosdaniel.apiblog.Post;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-public record AuthorDTO(
+public record PostRequestDTO(
         @NotBlank(message = "Campo obrigatório")
-        String name,
+        @Size(min = 3, max = 60)
+        String title,
+        @NotBlank(message = "Campo obrigatório")
+        String text,
         @NotBlank(message = "Campo obrigatório")
         @Past(message = "Não pode ser uma data futura")
         @Schema(description = "Data de publicação")
-        LocalDate publicationDate)
+        LocalDate  publicationDate,
+        @NotBlank(message = "Campo obrigatório")
+        Long idAuthor) 
 {
+
 }

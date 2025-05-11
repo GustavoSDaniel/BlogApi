@@ -11,11 +11,17 @@ import java.util.List;
 public class AuthorService {
     private final AuthorRepository authorRepository;
 
+    public Author create(AuthorRequestDTO authorRequestDTO){
+        Author newAuthor = new Author();
+        newAuthor.setName(authorRequestDTO.name());
+        return authorRepository.save(newAuthor);
+    }
+
     public Author saveAuthor(Author author) {
         return authorRepository.save(author);
     }
 
-    public List<Author> getAllAuthors(Author author) {
+    public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }
 

@@ -1,5 +1,7 @@
 package com.devgustavosdaniel.apiblog.Post;
 
+import com.devgustavosdaniel.apiblog.Author.Author;
+import com.devgustavosdaniel.apiblog.Author.AuthorRepository;
 import com.devgustavosdaniel.apiblog.exceptions.MyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,19 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final AuthorRepository authorRepository;
+
+    public Post create(PostRequestDTO postRequestDTO){
+        Author author = authorRepository.findById(postRequestDTO.idAuthor())
+                .orElseThrow(() -> new MyException("Id do Autor "+postRequestDTO.idAuthor()+ " não encontrado"));
+        Post newPost = new Post();
+        newPost.setTitle(postRequestDTO.title());
+        newPost.setText(postRequestDTO.text());
+        newPost.setPublicationDate(postRequestDTO.publicationDate());
+        newPost.setAuthor(author);
+
+        return postRepository.save(newPost);
+    }
 
     public Post save(Post post) {
         return postRepository.save(post);
