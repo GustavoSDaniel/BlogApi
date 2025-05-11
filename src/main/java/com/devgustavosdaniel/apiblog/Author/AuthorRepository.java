@@ -1,7 +1,5 @@
-package com.devgustavosdaniel.apiblog.repository;
+package com.devgustavosdaniel.apiblog.Author;
 
-import com.devgustavosdaniel.apiblog.model.Author;
-import com.devgustavosdaniel.apiblog.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,5 +1,6 @@
-package com.devgustavosdaniel.apiblog.model;
+package com.devgustavosdaniel.apiblog.Author;
 
+import com.devgustavosdaniel.apiblog.Post.Post;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

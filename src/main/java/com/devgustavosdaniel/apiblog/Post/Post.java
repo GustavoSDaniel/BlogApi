@@ -1,5 +1,6 @@
-package com.devgustavosdaniel.apiblog.model;
+package com.devgustavosdaniel.apiblog.Post;
 
+import com.devgustavosdaniel.apiblog.Author.Author;
 import jakarta.persistence.*;
 
 @Entity

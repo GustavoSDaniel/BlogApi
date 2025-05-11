@@ -1,4 +1,4 @@
-package com.devgustavosdaniel.apiblog.dto;
+package com.devgustavosdaniel.apiblog.Author;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

@@ -1,8 +1,6 @@
-package com.devgustavosdaniel.apiblog.service;
+package com.devgustavosdaniel.apiblog.Author;
 
 import com.devgustavosdaniel.apiblog.exceptions.MyException;
-import com.devgustavosdaniel.apiblog.model.Author;
-import com.devgustavosdaniel.apiblog.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

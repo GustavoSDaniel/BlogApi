@@ -1,4 +1,4 @@
-package com.devgustavosdaniel.apiblog.dto;
+package com.devgustavosdaniel.apiblog.Post;
 
 import jakarta.validation.constraints.NotBlank;
 
