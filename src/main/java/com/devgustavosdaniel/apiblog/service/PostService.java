@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,6 +49,20 @@ public class PostService {
             throw new MyException("Post com o ID" +id+ " não encontrado");
         }
         postRepository.deleteById(id);
+    }
+
+    public List<Post> postDoAuthor(Long idAuthor) {
+        if (!postRepository.existsById(idAuthor)){
+            throw new MyException("Ai do Autor "+idAuthor+" não encontrado");
+        }
+
+        List<Post> postsAuthor = postRepository.findByAuthorId(idAuthor);
+
+        if (postsAuthor.isEmpty()){
+            throw new MyException("Autor não tem nenhum post vinculado");
+        }
+
+        return postsAuthor;
     }
 
 }

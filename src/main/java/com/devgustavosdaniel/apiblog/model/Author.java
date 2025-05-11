@@ -12,7 +12,7 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAuthor;
+    private Long id;
     private String name;
     private LocalDate publicationDate;
     @OneToMany
@@ -28,7 +28,7 @@ public class Author {
     }
 
     public Long getIdAuthor() {
-        return idAuthor;
+        return id;
     }
 
     public String getName() {

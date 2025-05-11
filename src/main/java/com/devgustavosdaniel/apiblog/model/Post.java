@@ -13,6 +13,7 @@ public class Post {
     private String text;
 
     @ManyToOne
+    @JoinColumn(name = "idAuthor")
     private Author author;
 
     public Post() {
