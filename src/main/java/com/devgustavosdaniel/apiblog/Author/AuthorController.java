@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/authors")
 @RequiredArgsConstructor
 public class AuthorController {
+
     public final AuthorService authorService;
+    public final AuthorMapper authorMapper;
+
+    
 
 
 }

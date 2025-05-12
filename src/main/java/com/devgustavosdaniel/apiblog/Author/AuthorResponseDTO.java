@@ -1,6 +1,6 @@
 package com.devgustavosdaniel.apiblog.Author;
 
-public record PostResponseDTO(
+public record AuthorResponseDTO(
         Long id,
         String name
 ) {

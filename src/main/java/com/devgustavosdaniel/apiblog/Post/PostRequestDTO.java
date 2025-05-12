@@ -19,6 +19,4 @@ public record PostRequestDTO(
         LocalDate  publicationDate,
         @NotBlank(message = "Campo obrigatório")
         Long idAuthor) 
-{
-
-}
+{ }
