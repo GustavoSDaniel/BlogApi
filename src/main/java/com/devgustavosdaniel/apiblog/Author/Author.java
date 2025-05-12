@@ -12,6 +12,7 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_autor")
     private Long id;
     private String name;
     @OneToMany(mappedBy = "author")

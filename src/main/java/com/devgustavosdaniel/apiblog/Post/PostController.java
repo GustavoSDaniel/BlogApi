@@ -66,4 +66,19 @@ public class PostController {
         return ResponseEntity.ok(postResponseDTOAtt);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long id){
+        postService.deletePostPorId(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+    @GetMapping("/author/{authorid}")
+    public ResponseEntity<List<PostResponseDTO>> getPostByAuthor(@PathVariable Long authorId){
+        List<Post> postsAuthor = postService.postDoAuthor(authorId);
+        List<PostResponseDTO> postResponseDTOsAuthor = postsAuthor.stream()// Converte cada entidade Post para PostResponseDTO.
+                .map(postMapper ::toPostResponseDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(postResponseDTOsAuthor);
+    }
 }
