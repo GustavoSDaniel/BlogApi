@@ -1,5 +1,7 @@
 package com.devgustavosdaniel.apiblog.Post;
 
+import com.devgustavosdaniel.apiblog.Author.Author;
+import com.devgustavosdaniel.apiblog.Author.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 public class PostController {
     public final PostService postService;
     public final PostMapper postMapper;
+    public final AuthorService authorService;
 
     @PostMapping
     public ResponseEntity<PostResponseDTO> createPost(@Validated @RequestBody PostRequestDTO postRequestDTO){
@@ -54,14 +57,15 @@ public class PostController {
         return ResponseEntity.ok(postResponseDTOSearch);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PostResponseDTO> updatePost(@PathVariable Long id, @Validated @RequestBody PostResponseDTO postResponseDTO){
-        Post postUpdate = new Post();
-        postUpdate.setAuthor(postUpdate.getAuthor());
-        postUpdate.setTitle(postUpdate.getTitle());
-        postUpdate.setText(postUpdate.getText());
-        postUpdate.setPublicationDate(postUpdate.getPublicationDate());
-        postService.updateById(postUpdate);
+    @PutMapping("/id/{id}")
+    public ResponseEntity<PostResponseDTO> updatePost(@PathVariable Long id, @Validated @RequestBody PostRequestDTO postRequestDTO){
+        Post postExiste = postService.postById(id);
+        postExiste.setTitle(postRequestDTO.title());
+        postExiste.setText(postRequestDTO.text());
+        postExiste.setPublicationDate(postRequestDTO.publicationDate());
+        Author author = authorService.getAuthorId(postRequestDTO.idAuthor()); // Busca o autor pelo ID vindo do DTO
+        postExiste.setAuthor(author);
+        Post postUpdate = postService.save(postExiste);
         PostResponseDTO postResponseDTOAtt = postMapper.toPostResponseDTO(postUpdate);
         return ResponseEntity.ok(postResponseDTOAtt);
     }
