@@ -77,7 +77,7 @@ public class PostController {
     }
 
 
-    @GetMapping("/author/{authorid}")
+    @GetMapping("/author/{authorId}")
     public ResponseEntity<List<PostResponseDTO>> getPostByAuthor(@PathVariable Long authorId){
         List<Post> postsAuthor = postService.postDoAuthor(authorId);
         List<PostResponseDTO> postResponseDTOsAuthor = postsAuthor.stream()// Converte cada entidade Post para PostResponseDTO.
