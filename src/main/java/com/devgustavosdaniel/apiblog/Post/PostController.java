@@ -41,15 +41,15 @@ public class PostController {
         return ResponseEntity.ok(postResponseDTOList);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PostResponseDTO> getPostById (Long id) {
+    @GetMapping("/id/{id}")
+    public ResponseEntity<PostResponseDTO> getPostById (@PathVariable Long id) {
         Post post = postService.postById(id);
         PostResponseDTO postResponseDTO = postMapper.toPostResponseDTO(post);
         return ResponseEntity.ok(postResponseDTO);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<PostResponseDTO>> getByTitle(@RequestParam String title) {
+    @GetMapping("/search/{title}")
+    public ResponseEntity<List<PostResponseDTO>> getByTitle(@PathVariable String title) {
         List<Post> posts = postService.searchByTitle(title);
         List<PostResponseDTO> postResponseDTOSearch = posts.stream()
                 .map(postMapper::toPostResponseDTO)
@@ -57,7 +57,7 @@ public class PostController {
         return ResponseEntity.ok(postResponseDTOSearch);
     }
 
-    @PutMapping("/id/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<PostResponseDTO> updatePost(@PathVariable Long id, @Validated @RequestBody PostRequestDTO postRequestDTO){
         Post postExiste = postService.postById(id);
         postExiste.setTitle(postRequestDTO.title());
@@ -70,7 +70,7 @@ public class PostController {
         return ResponseEntity.ok(postResponseDTOAtt);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/id/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id){
         postService.deletePostPorId(id);
         return ResponseEntity.noContent().build();
