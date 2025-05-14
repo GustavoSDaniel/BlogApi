@@ -1,7 +1,8 @@
-API RESTful para Gerenciamento de Blogs com Spring Boot!
+# API RESTful para Gerenciamento de Blogs com Spring Boot!
 
-⚙️ Principais Funcionalidades
-📝 Posts
+## ⚙️ Principais Funcionalidades
+
+### 📝 Posts
 
 Criar novos posts com título, conteúdo e data de publicação
 
@@ -11,7 +12,7 @@ Buscar posts por ID, título ou autor
 
 Atualizar e excluir posts
 
-👤 Autores
+### 👤 Autores
 
 Criar e listar autores
 
@@ -31,7 +32,8 @@ Tratamento Global de Exceções: Respostas padronizadas e informativas em caso d
 
 Testes com Postman: Todas as rotas foram testadas com o Postman para garantir o correto funcionamento da API e facilitar futuras integrações
 
-🧰 Tecnologias Utilizadas
+### 🧰 Tecnologias Utilizadas
+
 Linguagem: Java
 
 Framework: Spring Boot
