@@ -15,7 +15,7 @@ public class PostMapper {
                 post.getTitle(),
                 post.getText(),
                 post.getPublicationDate(),
-                post.getAuthor() != null ? post.getAuthor().getIdAuthor() : null
+                post.getAuthor() != null ? post.getAuthor().getIdAuthor() : null // condição ? valor_se_verdadeiro : valor_se_falso
 
     );
     }
